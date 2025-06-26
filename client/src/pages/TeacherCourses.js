@@ -16,8 +16,7 @@ const TeacherCourses = () => {
   }, [teacherName]);
 
   return (
-    <>
-      <NavigationBar />
+    
       <div className="container mt-5">
         <h3 className="text-center">👨‍🏫 My Created Courses</h3>
         {myCourses.length === 0 ? (
@@ -36,7 +35,7 @@ const TeacherCourses = () => {
           </div>
         )}
       </div>
-    </>
+    
   );
 };
 

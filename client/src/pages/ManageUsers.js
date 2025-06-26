@@ -20,8 +20,7 @@ const ManageUsers = () => {
   }, []);
 
   return (
-    <>
-      <NavigationBar />
+    
       <div className="container mt-5">
         <h3 className="text-center">👤 Manage Users</h3>
         {users.length === 0 ? (
@@ -46,7 +45,7 @@ const ManageUsers = () => {
           </table>
         )}
       </div>
-    </>
+    
   );
 };
 

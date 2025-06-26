@@ -1,16 +1,18 @@
-import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+
+// import pages
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import StudentDashboard from "./pages/StudentDashboard";
-import TeacherDashboard from "./pages/TeacherDashboard";
-import AdminDashboard from "./pages/AdminDashboard";
-import TokenViewer from "./pages/TokenViewer";
 import EnrolledCourses from "./pages/EnrolledCourses";
+import TeacherDashboard from "./pages/TeacherDashboard";
 import TeacherCourses from "./pages/TeacherCourses";
+import AdminDashboard from "./pages/AdminDashboard";
 import ManageUsers from "./pages/ManageUsers";
 import ManageCourses from "./pages/ManageCourses";
-import Layout from "./pages/Layout"; // ✅ import layout
+import TokenViewer from "./pages/TokenViewer";
 
 const App = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -25,11 +27,14 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/token" element={<TokenViewer />} />
+      {/* Layout wraps everything */}
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/token" element={<TokenViewer />} />
 
-      <Route element={<Layout />}> {/* ✅ Global navbar wrapper */}
+        {/* Student Routes */}
         <Route
           path="/student"
           element={
@@ -46,6 +51,8 @@ const App = () => {
             </RequireAuth>
           }
         />
+
+        {/* Teacher Routes */}
         <Route
           path="/teacher"
           element={
@@ -62,6 +69,16 @@ const App = () => {
             </RequireAuth>
           }
         />
+        <Route
+          path="/teacher/create"
+          element={
+            <RequireAuth role="teacher">
+              <TeacherDashboard />
+            </RequireAuth>
+          }
+        />
+
+        {/* Admin Routes */}
         <Route
           path="/admin"
           element={
@@ -86,14 +103,15 @@ const App = () => {
             </RequireAuth>
           }
         />
-      </Route>
 
-      <Route
-        path="*"
-        element={
-          user?.role ? <Navigate to={`/${user.role}`} /> : <Navigate to="/login" />
-        }
-      />
+        {/* Fallback route */}
+        <Route
+          path="*"
+          element={
+            user?.role ? <Navigate to={`/${user.role}`} /> : <Navigate to="/" />
+          }
+        />
+      </Route>
     </Routes>
   );
 };

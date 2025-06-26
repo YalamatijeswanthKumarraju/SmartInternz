@@ -18,8 +18,7 @@ const EnrolledCourses = () => {
   }, [userId]);
 
   return (
-    <>
-      <NavigationBar />
+    
       <div className="container mt-5">
         <h3 className="text-center">📘 Enrolled Courses</h3>
         {courses.length === 0 ? (
@@ -38,7 +37,6 @@ const EnrolledCourses = () => {
           </div>
         )}
       </div>
-    </>
   );
 };
 

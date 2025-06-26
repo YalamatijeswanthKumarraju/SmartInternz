@@ -20,8 +20,7 @@ const ManageCourses = () => {
   }, []);
 
   return (
-    <>
-      <NavigationBar />
+    
       <div className="container mt-5">
         <h3 className="text-center">🗂️ Manage Courses</h3>
         {courses.length === 0 ? (
@@ -46,7 +45,7 @@ const ManageCourses = () => {
           </table>
         )}
       </div>
-    </>
+    
   );
 };
 

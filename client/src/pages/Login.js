@@ -21,6 +21,7 @@ const Login = () => {
 
       alert("✅ Login successful!");
       navigate(`/${userData.user.role}`);
+      console.log("Logging in as:", userData.user.role);
     } catch (err) {
       alert("❌ Login failed: " + err.response?.data?.message);
     } finally {
