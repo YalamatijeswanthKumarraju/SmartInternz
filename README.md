@@ -71,9 +71,13 @@ A full-stack online learning platform that enables students, admins, and instruc
 
 ## 📦 Project Structure
 /client => Frontend code (HTML/CSS/Bootstrap/MUI)
+
 /server => Backend (Node.js + Express APIs)
+
 /models => Mongoose models (User, Course, Certificate)
+
 /routes => Role-based API endpoints
+
 /config => DB connection and secrets
 
 ### 📽️ Demo Video 
